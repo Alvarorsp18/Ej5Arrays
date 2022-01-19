@@ -47,5 +47,19 @@ public class Empresa {
     public void informe(){
         Fecha hoy=new Fecha();
         System.out.println("\t\t\t\tINFORME DE FACTURAS");
+        System.out.println("Fecha:"+ hoy.fechaCompleta());
+        System.out.println("CIF \t NOMBRE \t FECHA \t FACTURA \t IMPORTE BRUTO \t FECHA VECIMIENTO \t IMPORTE NETO");
+        for(int ncliente=0; ncliente<clientes.length; ncliente++){
+            Fecha vencimiento= new Fecha(
+                    clientes[ncliente].getFechaFra().getDia(),
+                    clientes[ncliente].getFechaFra().getMes(),
+                    clientes[ncliente].getFechaFra().getAnno());
+            vencimiento.calcularVencimiento(clientes[ncliente].getDiasVen());
+            System.out.print(clientes[ncliente].getCif());
+            System.out.print("\t"+clientes[ncliente].getNombre());
+            System.out.print("\t"+clientes[ncliente].getFechaFra().fechaCompleta());
+            System.out.print("\t"+clientes[ncliente].getImporte());
+            System.out.print("\t"+ vencimiento.fechaCompleta());
+        }
     }
 }

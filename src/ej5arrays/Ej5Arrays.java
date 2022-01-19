@@ -22,6 +22,7 @@ public class Ej5Arrays {
         Empresa miEmpresa;
         miEmpresa=new Empresa(nClientes);
         miEmpresa.inicializarClientes();
+        miEmpresa.informe();
     }
     
 }
