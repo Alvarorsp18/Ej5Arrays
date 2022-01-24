@@ -49,6 +49,12 @@ public class Empresa {
         Fecha hoy = new Fecha();
         float descuento, importeNeto;
         int pos;
+        int mesSig=hoy.getMes()+1;
+        int annoSig=hoy.getAnno();
+        if(mesSig>11){
+            annoSig++;
+            mesSig=0;
+        }
         System.out.println("\t\t\t\tINFORME DE FACTURAS");
         System.out.println("Fecha:" + hoy.fechaCompleta());
         System.out.println("CIF \t NOMBRE \t FECHA \t FACTURA \t IMPORTE BRUTO \t FECHA VECIMIENTO \t IMPORTE NETO");
@@ -65,12 +71,14 @@ public class Empresa {
                     clientes[ncliente].getFechaFra().getMes(),
                     clientes[ncliente].getFechaFra().getAnno());
             vencimiento.calcularVencimiento(clientes[ncliente].getDiasVen());
+            if(importeNeto>10000 && vencimiento.getMes()==mesSig && vencimiento.getAnno()==annoSig){
             System.out.print(clientes[ncliente].getCif());
             System.out.print("\t" + clientes[ncliente].getNombre());
             System.out.print("\t" + clientes[ncliente].getFechaFra().fechaCompleta());
             System.out.print("\t" + clientes[ncliente].getImporte());
             System.out.print("\t" + vencimiento.fechaCompleta());
             System.out.print("\t" + importeNeto);
+            }
         }
     }
 
